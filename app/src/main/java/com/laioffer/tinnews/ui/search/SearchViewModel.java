@@ -25,4 +25,3 @@ public class SearchViewModel extends ViewModel {
         return Transformations.switchMap(searchInput, repository::searchNews);
     }
 }
-}
