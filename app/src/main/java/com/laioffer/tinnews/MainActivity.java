@@ -1,17 +1,17 @@
-package com.example.tinnews;
+package com.laioffer.tinnews;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.tinnews.model.NewsResponse;
-import com.example.tinnews.network.NewsApi;
-import com.example.tinnews.network.RetrofitClient;
+import com.example.tinnews.R;
+import com.laioffer.tinnews.model.NewsResponse;
+import com.laioffer.tinnews.network.NewsApi;
+import com.laioffer.tinnews.network.RetrofitClient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import retrofit2.Call;

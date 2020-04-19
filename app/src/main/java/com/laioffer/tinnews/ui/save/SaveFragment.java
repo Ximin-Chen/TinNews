@@ -1,4 +1,4 @@
-package com.example.tinnews.ui.save;
+package com.laioffer.tinnews.ui.save;
 
 import android.os.Bundle;
 

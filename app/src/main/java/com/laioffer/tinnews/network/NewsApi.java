@@ -1,6 +1,6 @@
-package com.example.tinnews.network;
+package com.laioffer.tinnews.network;
 
-import com.example.tinnews.model.NewsResponse;
+import com.laioffer.tinnews.model.NewsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

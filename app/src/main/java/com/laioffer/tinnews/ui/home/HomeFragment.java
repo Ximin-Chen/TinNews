@@ -1,4 +1,4 @@
-package com.example.tinnews.ui.home;
+package com.laioffer.tinnews.ui.home;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package com.example.tinnews.ui.search;
+package com.laioffer.tinnews.ui.search;
 
 import android.os.Bundle;
 
