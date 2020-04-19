@@ -1,1 +1,1 @@
-#  a Tinder-like News Android Application
+#  A Tinder-like News Android Application!
