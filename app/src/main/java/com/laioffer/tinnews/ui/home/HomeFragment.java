@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tinnews.R;
+import com.laioffer.tinnews.R;
 
 /**
  * A simple {@link Fragment} subclass.
