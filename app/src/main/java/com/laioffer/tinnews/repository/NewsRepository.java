@@ -20,7 +20,7 @@ public class NewsRepository {
         newsApi = RetrofitClient.newInstance(context).create(NewsApi.class);
     }
 
-    public LiveData<NewsResponse> getTopHeadLines(String country) {
+    public LiveData<NewsResponse> getTopHeadlines(String country) {
         MutableLiveData<NewsResponse> topHeadlinesLiveData = new MutableLiveData<>();
         newsApi.getTopHeadlines(country).enqueue(new Callback<NewsResponse>() {
             @Override
