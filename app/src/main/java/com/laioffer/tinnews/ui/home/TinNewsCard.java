@@ -12,6 +12,7 @@ import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
+import com.squareup.picasso.Picasso;
 
 @Layout(R.layout.tin_news_card)
 public class TinNewsCard {
@@ -35,6 +36,12 @@ public class TinNewsCard {
     private void onResolved() {
         newsTitle.setText(article.title);
         newsDescription.setText(article.description);
+//        if (article.urlToImage == null || article.urlToImage.isEmpty()) {
+//            image.setImageResource(R.drawable.ic_empty_image);
+//        } else {
+           // article.urlToImage
+            Picasso.get().load("https://p1.pstatp.com/large/pgc-image/15399285857350b37df2c48").into(image);
+//        }
     }
 
     @SwipeOut
