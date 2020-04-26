@@ -18,6 +18,11 @@ import java.util.List;
 
 public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.SearchNewsViewHolder> {
     private List<Article> articles = new LinkedList<>();
+    private LikeListener likeListener;
+
+    public void setLikeListener(LikeListener likeListener) {
+        this.likeListener = likeListener;
+    }
 
     public void setArticles(List<Article> newsList) {
         this.articles.clear();
@@ -37,14 +42,32 @@ public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.Se
     public void onBindViewHolder(@NonNull SearchNewsViewHolder holder, int position) {
         Article article = articles.get(position);
         holder.title.setText(article.title);
-        Picasso.get().load(article.urlToImage).into(holder.newsImage);
-        holder.favorite.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+
+        if (article.urlToImage == null) {
+            holder.newsImage.setImageResource(R.drawable.ic_empty_image);
+        } else {
+            Picasso.get().load(article.urlToImage).into(holder.newsImage);
+        }
+
+        if (article.favorite) {
+            holder.favorite.setImageResource(R.drawable.ic_favorite_black_24dp);
+            holder.favorite.setOnClickListener(null);
+        } else {
+            holder.favorite.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+        }
+
+        holder.favorite.setOnClickListener(
+                v -> {
+                    article.favorite = true;
+                    likeListener.onLike(article);
+                });
     }
 
     @Override
     public int getItemCount() {
         return articles.size();
     }
+
 
     public static class SearchNewsViewHolder extends RecyclerView.ViewHolder {
         ImageView newsImage;
@@ -58,4 +81,11 @@ public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.Se
             title = itemView.findViewById(R.id.title);
         }
     }
+
+    interface LikeListener {
+        void onLike(Article article);
+        void onClick(Article article);
+    }
+
 }
+

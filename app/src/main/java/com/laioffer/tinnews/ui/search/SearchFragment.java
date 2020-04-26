@@ -13,11 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Toast;
 
 import com.laioffer.tinnews.R;
 import com.laioffer.tinnews.databinding.FragmentSearchBinding;
+import com.laioffer.tinnews.model.Article;
 import com.laioffer.tinnews.repository.NewsRepository;
 import com.laioffer.tinnews.repository.NewsViewModelFactory;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,6 +48,19 @@ public class SearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         SearchNewsAdapter newsAdapter = new SearchNewsAdapter();
+        newsAdapter.setLikeListener(new SearchNewsAdapter.LikeListener() {
+            @Override
+            public void onLike(Article article) {
+                viewModel.setFavoriteArticleInput(article);
+            }
+
+            @Override
+            public void onClick(Article article) {
+                // TODO
+            }
+
+        });
+
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         gridLayoutManager.setSpanSizeLookup(
                 new GridLayoutManager.SpanSizeLookup() {
@@ -80,5 +97,23 @@ public class SearchFragment extends Fragment {
                                 Log.d("SearchFragment", newsResponse.toString());
                             }
                         });
+        viewModel
+                .onFavorite()
+                .observe(
+                        getViewLifecycleOwner(),
+                        isSuccess -> {
+                            if (isSuccess) {
+                                Toast.makeText(requireActivity(), "Success", LENGTH_SHORT).show();
+                                newsAdapter.notifyDataSetChanged();
+                            } else {
+                                Toast.makeText(requireActivity(), "You might have liked before", LENGTH_SHORT).show();
+                            }
+                        });
+
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        viewModel.onCancel();
     }
 }
