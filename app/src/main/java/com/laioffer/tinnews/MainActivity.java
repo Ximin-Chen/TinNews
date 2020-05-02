@@ -32,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
         navController = navHostFragment.getNavController();
 
         NavigationUI.setupWithNavController(navigationView, navController);
-        NavigationUI.setupActionBarWithNavController(this, navController);
-
+       // NavigationUI.setupActionBarWithNavController(this, navController);
     }
 
     public boolean onSupportNavigateUp() {
