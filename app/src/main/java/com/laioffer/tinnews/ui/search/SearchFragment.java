@@ -57,9 +57,10 @@ public class SearchFragment extends Fragment {
 
             @Override
             public void onClick(Article article) {
-                NavHostFragment.findNavController(SearchFragment.this).navigate(R.id.action_title_search_to_detail);
+                SearchFragmentDirections.ActionTitleSearchToDetail actionTitleSearchToDetail = SearchFragmentDirections.actionTitleSearchToDetail();
+                actionTitleSearchToDetail.setArticle(article);
+                NavHostFragment.findNavController(SearchFragment.this).navigate(actionTitleSearchToDetail);
             }
-
         });
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
