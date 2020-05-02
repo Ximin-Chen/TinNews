@@ -38,12 +38,12 @@ public class TinNewsCard {
     private void onResolved() {
         newsTitle.setText(article.title);
         newsDescription.setText(article.description);
-//        if (article.urlToImage == null || article.urlToImage.isEmpty()) {
-//            image.setImageResource(R.drawable.ic_empty_image);
-//        } else {
-        // article.urlToImage
-        Picasso.get().load("https://p1.pstatp.com/large/pgc-image/15399285857350b37df2c48").into(image);
-//        }
+        if (article.urlToImage == null || article.urlToImage.isEmpty()) {
+            image.setImageResource(R.drawable.ic_empty_image);
+        } else {
+            Picasso.get().load(article.urlToImage).into(image);
+        }
+       //
     }
 
     @SwipeOut
