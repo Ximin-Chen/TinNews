@@ -61,6 +61,10 @@ public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.Se
                     article.favorite = true;
                     likeListener.onLike(article);
                 });
+        holder.itemView.setOnClickListener(
+                v -> {
+                    likeListener.onClick(article);
+                });
     }
 
     @Override
