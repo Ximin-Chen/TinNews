@@ -30,7 +30,7 @@ public class SearchFragment extends Fragment {
 
     private SearchViewModel viewModel;
     private FragmentSearchBinding binding;
-    
+
     public SearchFragment() {
         // Required empty public const
         // ructor
